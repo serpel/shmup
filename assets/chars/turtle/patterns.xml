@@ -1,0 +1,13 @@
+<PatternsFile>
+	<Type name="1">
+		<Pattern bullet="basic bullet" animation_velocity="5" auto_scale="0.017" angle="0" velocity="0" max_velocity="25" acceleration="2" a_frequency="1" cooldown="10" offset_x="45"/>
+	</Type>
+
+	<Type name="bomb">
+		<Pattern bullet="bomb" undestructable="yes" collides_bullets="yes" collides_opponent="no" animation_velocity="2" angle="0" velocity="0" acceleration="0" a_frequency="1" cooldown="10" offset_x="-35">
+      <Modifier at="10" bullet="bomb2" acceleration="1" a_frequency="30"/>
+      <Modifier at="250" acceleration="2" a_frequency="1"/>
+    </Pattern>
+	</Type>
+<!-- END OF FILE -->
+</PatternsFile>

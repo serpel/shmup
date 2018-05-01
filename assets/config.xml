@@ -1,0 +1,14 @@
+<ConfigFile>
+	<Resolution x="3840" y="2160"/>
+	<ScreenSize x="3840" y="2160"/>
+	<Fullscreen enabled="yes"/>
+	<Font red="255" green="255" blue="255" size="30"/>
+	<Chars>
+		<char name="turtle"/>
+	</Chars>
+	<Stages>
+      <stage name="demo"/>
+	</Stages>
+	<YouLose x="0" y="0" animation_velocity="5" sound="misc/lose.wav"/>
+	<YouWin x="0" y="0" animation_velocity="5" sound="misc/win.wav"/>
+</ConfigFile>

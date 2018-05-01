@@ -1,0 +1,81 @@
+<MainFile>
+	<LifeBar color_r="39" color_g="174" color_b="96" rect_offset_x="60" rect_offset_y="10" rect_width="352" rect_height="40"/>
+	<Attributes velocity="6" animation_velocity="8" hp="500" initial_x="100" initial_y="500"/>
+  <Shield sprite="shield.png" max_shield="500" shield_fade="40" proration="40"/>
+  <Charge sprite="charge.png" max_charge="300" charge_velocity="1" x="-40" y="0"/>
+  <Parry duration="60" sound="parry.ogg">
+    <Parrying sprite="parrying.png" x="-40" y="-35"/>
+    <Parryed sprite="parryed.png" x="-40" y="-35"/>
+    <Hitboxes>
+      <Hitbox x="-21" y="-25" width="5" height="50" angle="0"/>
+      <Hitbox x="-21" y="-19" width="5" height="46" angle="60"/>
+      <Hitbox x="19" y="-3" width="5" height="46" angle="-60"/>
+    </Hitboxes>
+  </Parry>
+  <Hitboxes>
+    <!--<Hitbox x="-20" y="-7" width="20" height="14" angle="0"/>-->
+<!--
+    <Hitbox x="-12" y="-9" width="6" height="18" angle="0"/>
+    <Hitbox x="-6" y="-6" width="6" height="12" angle="0"/>
+    <Hitbox x="0" y="-3" width="6" height="6" angle="0"/>
+-->
+<!--
+    <Hitbox x="-13" y="-10" width="1" height="20" angle="0"/>
+    <Hitbox x="-13" y="-10" width="1" height="20" angle="60"/>
+    <Hitbox x="5" y="-1" width="1" height="20" angle="-60"/>
+-->
+    <Hitbox x="-10" y="-5" width="1" height="10" angle="0"/>
+    <Hitbox x="-10" y="-5" width="1" height="10" angle="60"/>
+    <Hitbox x="-1" y="-0" width="1" height="10" angle="-60"/>
+
+
+  </Hitboxes>
+  <Sounds hit="hit.ogg"/>
+	<Sprites orientation="idle">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+	<Sprites orientation="up">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+	<Sprites orientation="down">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+	<Sprites orientation="left">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+	<Sprites orientation="right">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+	<Sprites orientation="destroyed">
+		<Sprite path="move/01.png"/>
+		<Sprite path="move/02.png"/>
+		<Sprite path="move/03.png"/>
+	</Sprites>
+  <FlatShadow image_path="shadow.png">
+    <CaseRight>
+      <Point x="4" y="0"/>
+      <Point x="-3" y="25"/>
+      <Inbetween>
+        <Point x="0" y="-50"/>
+      </Inbetween>
+    </CaseRight>
+    <CaseLeft>
+      <Point x="4" y="0"/>
+      <Point x="-3" y="-25"/>
+    </CaseLeft>
+    <CaseTop>
+      <Point x="4" y="0"/>
+      <Point x="-3" y="25"/>
+    </CaseTop>
+  </FlatShadow>
+</MainFile>

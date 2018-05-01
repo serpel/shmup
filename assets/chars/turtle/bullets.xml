@@ -1,0 +1,56 @@
+<BulletsFile>
+	<Bullet name="basic bullet" damage="2" sound_channel="-1" sound="shoot.ogg" width="26" height="6">
+    <Color red="255" green="255" blue="255" alpha="255"/>
+		<Sprite path="basic bullet.png"/>
+		<Hitbox x="-13" y="-3" width="26" height="6" angle="0"/>
+		<OnHit>
+			<Sprite path="kajira/1.png"/>
+			<Sprite path="kajira/2.png"/>
+			<Sprite path="kajira/3.png"/>
+			<Sprite path="kajira/4.png"/>
+		</OnHit>
+	</Bullet>
+
+	<Bullet name="bomb" damage="0" sound_channel="1" sound="bomb_release.ogg" width="10" height="800">
+    <Color red="255" green="255" blue="255" alpha="255"/>
+		<Sprite path="/bomb/5.png"/>
+		<Hitbox x="-35" y="-400" width="10" height="800" angle="0"/>
+		<Hitbox x="-20" y="-400" width="10" height="800" angle="0"/>
+		<Hitbox x="-5" y="-400" width="10" height="800" angle="0"/>
+		<OnHit>
+			<Sprite path="kajira/1.png"/>
+			<Sprite path="kajira/2.png"/>
+			<Sprite path="kajira/3.png"/>
+			<Sprite path="kajira/4.png"/>
+		</OnHit>
+<!--
+    <Color red="255" green="255" blue="255" alpha="255"/>
+		<Sprite path="/bomb/1.png"/>
+		<Sprite path="/bomb/2.png"/>
+		<Sprite path="/bomb/3.png"/>
+		<Sprite path="/bomb/4.png"/>
+		<Sprite path="/bomb/5.png"/>
+		<Hitbox x="-10" y="-10" width="20" height="20" angle="0"/>
+		<OnHit>
+			<Sprite path="kajira/1.png"/>
+			<Sprite path="kajira/2.png"/>
+			<Sprite path="kajira/3.png"/>
+			<Sprite path="kajira/4.png"/>
+		</OnHit>
+-->
+	</Bullet>
+
+	<Bullet name="bomb2" damage="0" sound_channel="2" sound_hit="bullet_hit.ogg" width="10" height="800">
+    <Color red="255" green="255" blue="255" alpha="255"/>
+		<Sprite path="/bomb/5.png"/>
+		<Hitbox x="-35" y="-400" width="10" height="800" angle="0"/>
+		<Hitbox x="-20" y="-400" width="10" height="800" angle="0"/>
+		<Hitbox x="-5" y="-400" width="10" height="800" angle="0"/>
+		<OnHit>
+			<Sprite path="kajira/1.png"/>
+			<Sprite path="kajira/2.png"/>
+			<Sprite path="kajira/3.png"/>
+			<Sprite path="kajira/4.png"/>
+		</OnHit>
+	</Bullet>
+</BulletsFile>
