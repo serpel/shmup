@@ -1,6 +1,6 @@
 <ConfigFile>
-	<Resolution x="3840" y="2160"/>
-	<ScreenSize x="3840" y="2160"/>
+	<Resolution x="1280" y="720"/>
+	<ScreenSize x="1280" y="720"/>
 	<Fullscreen enabled="yes"/>
 	<Font red="255" green="255" blue="255" size="30"/>
 	<Chars>
