@@ -74,8 +74,8 @@ void Stage::drawLayer(Layer* layer)
     for(int i=0;i<rosalila()->graphics->screen_width/(frame_width+layer->separation_x)+2;i++)
     {
 
-        int pos_x = layer->alignment_x + i*(frame_width+layer->separation_x);
-        int pos_y = rosalila()->graphics->screen_height - frame_heigth - layer->alignment_y;
+        int pos_x = layer->x + i*(frame_width+layer->separation_x);
+        int pos_y = rosalila()->graphics->screen_height - frame_heigth - layer->y;
 
         if(current_layer_frame->type == "image")
         {
@@ -110,15 +110,15 @@ void Stage::drawLayer(Layer* layer)
 
     if(layer->depth_effect_x>0)
     {
-        if(rosalila()->graphics->camera_x/layer->depth_effect_x>frame_width+layer->separation_x+layer->alignment_x)
+        if(rosalila()->graphics->camera_x/layer->depth_effect_x>frame_width+layer->separation_x+layer->x)
         {
-            layer->alignment_x+=frame_width+layer->separation_x;
+            layer->x+=frame_width+layer->separation_x;
         }
     }else if(layer->depth_effect_x<0)
     {
-        if(rosalila()->graphics->camera_x*-layer->depth_effect_x > frame_width+layer->separation_x+layer->alignment_x)
+        if(rosalila()->graphics->camera_x*-layer->depth_effect_x > frame_width+layer->separation_x+layer->x)
         {
-            layer->alignment_x+=frame_width+layer->separation_x;
+            layer->y+=frame_width+layer->separation_x;
         }
     }
 
@@ -305,19 +305,27 @@ void Stage::loadFromXML(std::string name, bool is_mod)
         if(backlayer_nodes[i]->hasAttribute("randomize_depth_effect_y"))
             depth_effect_y+=rosalila()->utility->getNonSeededRandomNumber()%atoi(backlayer_nodes[i]->attributes["randomize_depth_effect_y"].c_str());
 
-        int align_x=0;
-        if(backlayer_nodes[i]->hasAttribute("align_x"))
-            align_x=atoi(backlayer_nodes[i]->attributes["align_x"].c_str());
+        int x=0;
+        if(backlayer_nodes[i]->hasAttribute("x"))
+            x=atoi(backlayer_nodes[i]->attributes["x"].c_str());
 
-        if(backlayer_nodes[i]->hasAttribute("randomize_align_x"))
-            align_x+=rosalila()->utility->getNonSeededRandomNumber()%atoi(backlayer_nodes[i]->attributes["randomize_align_x"].c_str());
+        if(backlayer_nodes[i]->hasAttribute("randomize_x"))
+            x+=rosalila()->utility->getNonSeededRandomNumber()%atoi(backlayer_nodes[i]->attributes["randomize_x"].c_str());
 
-        int align_y=0;
-        if(backlayer_nodes[i]->hasAttribute("align_y"))
-            align_y=atoi(backlayer_nodes[i]->attributes["align_y"].c_str());
+        int y=0;
+        if(backlayer_nodes[i]->hasAttribute("y"))
+            y=atoi(backlayer_nodes[i]->attributes["y"].c_str());
 
-        if(backlayer_nodes[i]->hasAttribute("randomize_align_y"))
-            align_y+=rosalila()->utility->getNonSeededRandomNumber()%atoi(backlayer_nodes[i]->attributes["randomize_align_y"].c_str());
+        if(backlayer_nodes[i]->hasAttribute("randomize_y"))
+            y+=rosalila()->utility->getNonSeededRandomNumber()%atoi(backlayer_nodes[i]->attributes["randomize_y"].c_str());
+
+        int velocity_x=0;
+        if(backlayer_nodes[i]->hasAttribute("velocity_x"))
+            velocity_x=atoi(backlayer_nodes[i]->attributes["velocity_x"].c_str());
+
+        int velocity_y=0;
+        if(backlayer_nodes[i]->hasAttribute("velocity_y"))
+            velocity_y=atoi(backlayer_nodes[i]->attributes["velocity_y"].c_str());
 
         int separation_x=0;
         if(backlayer_nodes[i]->hasAttribute("separation_x"))
@@ -349,7 +357,13 @@ void Stage::loadFromXML(std::string name, bool is_mod)
         if(backlayer_nodes[i]->hasAttribute("alpha"))
             color.alpha=atoi(backlayer_nodes[i]->attributes["alpha"].c_str());
 
-        back.push_back(new Layer(layer_frames,frame_duration,depth_effect_x,depth_effect_y,align_x,align_y,separation_x,color));
+        back.push_back(new Layer(layer_frames,frame_duration,
+                                    depth_effect_x,depth_effect_y,
+                                    x, y, 
+                                    velocity_x, velocity_y,
+                                    separation_x,
+                                    color
+                                 ));
     }
 
     rosalila()->utility->writeLogLine("Loading stage's FrontLayers.");
@@ -371,14 +385,27 @@ void Stage::loadFromXML(std::string name, bool is_mod)
         if(frontlayer_nodes[i]->hasAttribute("depth_effect_y"))
             depth_effect_y=atoi(frontlayer_nodes[i]->attributes["depth_effect_y"].c_str());
 
-        int align_x=0;
-        if(frontlayer_nodes[i]->hasAttribute("align_x"))
-            align_x=atoi(frontlayer_nodes[i]->attributes["align_x"].c_str());
+        int x=0;
+        if(frontlayer_nodes[i]->hasAttribute("x"))
+            x=atoi(frontlayer_nodes[i]->attributes["x"].c_str());
 
-        int align_y=0;
-        if(frontlayer_nodes[i]->hasAttribute("align_y"))
-            align_y=atoi(frontlayer_nodes[i]->attributes["align_y"].c_str());
+        if(frontlayer_nodes[i]->hasAttribute("randomize_x"))
+            x+=rosalila()->utility->getNonSeededRandomNumber()%atoi(frontlayer_nodes[i]->attributes["randomize_x"].c_str());
 
+        int y=0;
+        if(frontlayer_nodes[i]->hasAttribute("y"))
+            y=atoi(frontlayer_nodes[i]->attributes["y"].c_str());
+
+        if(frontlayer_nodes[i]->hasAttribute("randomize_y"))
+            y+=rosalila()->utility->getNonSeededRandomNumber()%atoi(frontlayer_nodes[i]->attributes["randomize_y"].c_str());
+
+        int velocity_x=0;
+        if(frontlayer_nodes[i]->hasAttribute("velocity_x"))
+            velocity_x=atoi(frontlayer_nodes[i]->attributes["velocity_x"].c_str());
+
+        int velocity_y=0;
+        if(frontlayer_nodes[i]->hasAttribute("velocity_y"))
+            velocity_y=atoi(frontlayer_nodes[i]->attributes["velocity_y"].c_str());
         int separation_x=0;
         if(frontlayer_nodes[i]->hasAttribute("separation_x"))
             separation_x=atoi(frontlayer_nodes[i]->attributes["separation_x"].c_str());
@@ -398,8 +425,8 @@ void Stage::loadFromXML(std::string name, bool is_mod)
 
         Color color(255,255,255,255);
 
-        if(backlayer_nodes[i]->hasAttribute("randomize_color")
-           && backlayer_nodes[i]->attributes["randomize_color"]=="yes")
+        if(frontlayer_nodes[i]->hasAttribute("randomize_color")
+           && frontlayer_nodes[i]->attributes["randomize_color"]=="yes")
         {
             int random_number_pos=rosalila()->utility->getNonSeededRandomNumber()%random_colors_r.size();
             color.red=random_colors_r[random_number_pos];
@@ -407,12 +434,16 @@ void Stage::loadFromXML(std::string name, bool is_mod)
             color.blue=random_colors_b[random_number_pos];
         }
 
-        if(backlayer_nodes[i]->hasAttribute("alpha"))
+        if(frontlayer_nodes[i]->hasAttribute("alpha"))
             color.alpha=atoi(frontlayer_nodes[i]->attributes["alpha"].c_str());
 
-        front.push_back(new Layer(layer_frames,frame_duration,depth_effect_x,depth_effect_y,align_x,align_y,separation_x,
-                                  color
-                                  ));
+        front.push_back(new Layer(layer_frames,frame_duration,
+                                    depth_effect_x,depth_effect_y,
+                                    x, y, 
+                                    velocity_x, velocity_y,
+                                    separation_x,
+                                    color
+                                 ));
     }
 
     delete root_node;
@@ -450,6 +481,18 @@ void Stage::logic()
 {
     if(getIterateSlowdownFlag())
         iterator++;
+
+    for(int i=0;i<(int)back.size();i++)
+    {
+        Layer* layer=back[i];
+        layer->logic();
+    }
+
+    for(int i=0;i<(int)front.size();i++)
+    {
+        Layer* layer=front[i];
+        layer->logic();
+    }
 }
 
 void Stage::playMusic()

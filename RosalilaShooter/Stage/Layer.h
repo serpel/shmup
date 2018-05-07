@@ -16,8 +16,10 @@ public:
     int frame_duration;
     int depth_effect_x;
     int depth_effect_y;
-    int alignment_x;
-    int alignment_y;
+    double x;
+    double y;
+    double velocity_x;
+    double velocity_y;
     int separation_x;
 
     int current_frame;
@@ -26,8 +28,12 @@ public:
     Layer(vector<LayerFrame*> layer_frames,
           int frame_duration,
           int depth_effect_x,int depth_effect_y,
-          int alignment_x,int alignment_y,int separation_x,
+          double x, double y,
+          double velocity_x,double velocity_y,
+          int separation_x,
           Color color);
+    
+    void logic();
 
     ~Layer();
 };

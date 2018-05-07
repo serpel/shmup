@@ -1,9 +1,25 @@
 <StageFile>
 	<Bounds x1="0" y1="0" x2="1280" y2="720"/>
-	<Misc velocity="5"/>
-	<BackLayer randomize_color="no"  depth_effect_x="0" depth_effect_y="0" align_x="0" align_y="0" separation_x="0">
-		<frame type="image" image_path="water_background.png"/>
+	<Misc velocity="0"/>
+	<BackLayer randomize_color="no"  depth_effect_x="0" depth_effect_y="0" x="0" y="0" separation_x="0">
+		<frame type="image" image_path="layers/back.png"/>
 	</BackLayer>
+
+	<BackLayer randomize_color="no"  depth_effect_x="0" depth_effect_y="0" x="0" y="0" separation_x="0">
+		<frame type="image" image_path="layers/gradient.png"/>
+	</BackLayer>
+
+	<BackLayer randomize_color="no" velocity_x="3" randomize_depth_effect_x="30" depth_effect_x="2" depth_effect_y="0" randomize_x="500" x="0" randomize_y="400" y="0" randomize_separation_x="200" separation_x="1280">
+		<frame type="image" image_path="layers/swordfish.png"/>
+	</BackLayer>
+
+	<BackLayer randomize_color="no" velocity_x="-2" randomize_depth_effect_x="30" depth_effect_x="2" depth_effect_y="0" randomize_x="500" x="0" randomize_y="400" y="0" randomize_separation_x="200" separation_x="1280">
+		<frame type="image" image_path="layers/shark.png"/>
+	</BackLayer>
+
+	<FrontLayer randomize_color="no" depth_effect_x="0" depth_effect_y="0" x="0" y="0" separation_x="0">
+		<frame type="image" image_path="layers/seaweed.png"/>
+	</FrontLayer>
 <!--
 	<BackLayer randomize_appereance="yes" random_group="a" randomize_color="yes" randomize_depth_effect_x="30" depth_effect_x="2" depth_effect_y="0" randomize_align_x="500" align_x="0" randomize_align_y="200" align_y="0" randomize_separation_x="100" separation_x="0" alpha="64">
 		<frame type="rectangle" width="128" height="128"/>

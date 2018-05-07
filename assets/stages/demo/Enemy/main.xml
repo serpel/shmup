@@ -1,5 +1,5 @@
 <MainFile>
-	<LifeBar color_r="192" color_g="57" color_b="43" rect_offset_x="60" rect_offset_y="10" rect_width="352" rect_height="40" y="707"/>
+	<LifeBar x="600" color_r="192" color_g="57" color_b="43" rect_offset_x="60" rect_offset_y="10" rect_width="352" rect_height="40"/>
 	<Attributes velocity="0" animation_velocity="4" hp="300" initial_x="1600" initial_y="400"/>
 	<!--<Hitbox x="-122" y="-43" width="243" height="87" angle="0"/>-->
   <Hitboxes>

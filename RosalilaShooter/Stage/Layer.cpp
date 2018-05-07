@@ -1,6 +1,6 @@
 #include "Layer.h"
 
-Layer::Layer(vector<LayerFrame*> layer_frames,int frame_duration,int depth_effect_x,int depth_effect_y,int alignment_x,int alignment_y,int separation_x,
+Layer::Layer(vector<LayerFrame*> layer_frames,int frame_duration,int depth_effect_x,int depth_effect_y, double x,double y, double velocity_x, double velocity_y, int separation_x,
         Color color)
 {
     this->layer_frames=layer_frames;
@@ -9,10 +9,18 @@ Layer::Layer(vector<LayerFrame*> layer_frames,int frame_duration,int depth_effec
     this->depth_effect_y=depth_effect_y;
     this->current_frame=0;
     this->time_elapsed=0;
-    this->alignment_x=alignment_x;
-    this->alignment_y=alignment_y;
+    this->x=x;
+    this->y=y;
+    this->velocity_x=velocity_x;
+    this->velocity_y=velocity_y;
     this->separation_x=separation_x;
     this->color = color;
+}
+
+void Layer::logic()
+{
+    this->x += velocity_x;
+    this->y += velocity_y;
 }
 
 Layer::~Layer()

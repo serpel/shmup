@@ -151,7 +151,7 @@ void Enemy::logic(int stage_velocity, string stage_name)
 
     getIterateSlowdownFlag();
 
-    current_color_effect_a = /*255-*/(255*hp)/max_hp;
+    //current_color_effect_a = /*255-*/(255*hp)/max_hp;
 }
 
 void Enemy::bottomRender()

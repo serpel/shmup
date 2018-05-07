@@ -948,9 +948,7 @@ void Character::bottomRender()
         Color(current_color_effect_r,current_color_effect_g,current_color_effect_b,current_color_effect_a),
         0,0,
         true,
-        FlatShadow(flat_shadow_texture,2,60,0,700,-500,
-                   shadow_align_points_left,shadow_align_points_right,shadow_align_points_top,
-                   inbetween_shadow_align_points_left,inbetween_shadow_align_points_right,inbetween_shadow_align_points_top));
+        FlatShadow());
 
     if(rosalila()->receiver->isKeyDown(SDLK_h))
     {
@@ -1005,6 +1003,14 @@ void Character::topRender()
 //            }
 //        }
     }
+
+double current_percentual_hp = (double)this->hp / (double)this->max_hp;
+double current_life_bar_width = life_bar_rect_width * current_percentual_hp;
+
+rosalila()->graphics->drawRectangle(life_bar_x, life_bar_y,
+  current_life_bar_width, life_bar_rect_height,
+  0, color.red, color.blue, color.green, 255, false);
+
 
     rosalila()->graphics->drawRectangles(rectangles,0,0,true);
 

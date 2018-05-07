@@ -401,7 +401,7 @@ void Player::logic(int stage_velocity)
 
     iteration++;
 
-    current_color_effect_a = (255*hp)/max_hp;
+    //current_color_effect_a = (255*hp)/max_hp;
 
     current_shield-=shield_fade;
     if(current_shield<0)
